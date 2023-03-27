@@ -10,7 +10,7 @@ const progression = (questionIndex, start, diff) => {
   let rightAnswer = '';
   for (let i = 0; i < length; i += 1) {
     const nextElem = (i === questionIndex) ? '..' : start + (diff * i);
-    question += ` ${nextElem}`;
+    question += `${nextElem}`;
   }
   rightAnswer = start + questionIndex * diff;
   return [question, rightAnswer];
