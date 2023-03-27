@@ -23,7 +23,7 @@ const progressionGame = () => {
     const start = getRandomInt(1, 10);
     const diff = getRandomInt(1, 5);
     const values = progression(questionIndex, start, diff);
-    console.log('Question:', values[0]);
+    console.log(' Question:', values[0]);
     const answerUser = readlineSync.question('Your answer:');
     const rightAnswer = values[1];
     if (answerUser === String(rightAnswer)) {
