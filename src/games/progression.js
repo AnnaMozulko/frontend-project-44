@@ -1,12 +1,7 @@
 import readlineSync from 'readline-sync';
+import showName from '../index.js';
 
-const showGreeting = () => {
-  const userName = readlineSync.question('May I have your name?');
-  const greeting = 'Hello';
-  console.log(`${greeting}, ${userName}!`);
-  return userName;
-};
-
+const userName = showName();
 const length = 10;
 const getRandomInt = (max) => Math.floor(Math.random() * max);
 
@@ -22,6 +17,7 @@ const progression = (questionIndex, start, diff) => {
 };
 
 const progressionGame = () => {
+  console.log('What number is missing in the progression?');
   for (let i = 0; i < 3; i += 1) {
     const questionIndex = getRandomInt(length - 1);
     const start = getRandomInt(10);
@@ -33,9 +29,9 @@ const progressionGame = () => {
     if (answerUser === String(rightAnswer)) {
       console.log('Correct!');
     } if (answerUser !== String(rightAnswer)) {
-      return console.log(`"${answerUser}" is wrong answer ;(. Correct answer was "${rightAnswer}". \nLet's try again!`);
+      return console.log(`"${answerUser}" is wrong answer ;(. Correct answer was "${rightAnswer}". \nLet's try again, ${userName}!`);
     }
 }
-  return console.log('Congratulations!');
+  return console.log(`Congratulations, ${userName}!`);
 };
-export { showGreeting, progressionGame };
+export default progressionGame;

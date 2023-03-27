@@ -1,13 +1,9 @@
+/* eslint-disable import/no-unresolved */
 import readlineSync from 'readline-sync';
-
-const showGreeting = () => {
-  const userName = readlineSync.question('May I have your name?');
-  const greeting = 'Hello';
-  console.log(`${greeting}, ${userName}!`);
-  return userName;
-};
+import showName from '../index.js';
 
 const getRandomInt = (max) => Math.floor(Math.random() * max);
+const userName = showName();
 
 const isNatural = (task) => {
   for (let i = 2; i <= task / 2; i += 1) {
@@ -19,6 +15,8 @@ const isNatural = (task) => {
 };
 
 const primeGame = () => {
+  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
+
   for (let i = 0; i < 3; i += 1) {
     const task = getRandomInt(20);
     console.log('Question:', task);
@@ -28,9 +26,10 @@ const primeGame = () => {
     if (answerUser === String(rightAnswer)) {
       console.log('Correct!');
     } if (answerUser !== String(rightAnswer)) {
-      return console.log(`"${answerUser}" is wrong answer ;(. Correct answer was "${rightAnswer}". \nLet's try again!`);
+      return console.log(`"${answerUser}" is wrong answer ;(. Correct answer was "${rightAnswer}". \nLet's try again, ${userName}!`);
     }
   }
-  return console.log('Congratulations!');
+  return console.log(`Congratulations, ${userName}!`);
 };
-export { showGreeting, primeGame };
+
+export default primeGame;

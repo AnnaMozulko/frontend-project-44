@@ -1,13 +1,11 @@
 import readlineSync from 'readline-sync';
+import showName from '../index.js';
 
-const showGreeting = () => {
-  const userName = readlineSync.question('May I have your name?');
-  const greeting = 'Hello';
-  console.log(`${greeting}, ${userName}!`);
-  return userName;
-};
+const getRandomInt = (max) => Math.floor(Math.random() * max);
+const userName = showName();
+
 const calcGame = () => {
-  const getRandomInt = (max) => Math.floor(Math.random() * max);
+  console.log('What is the result of the expression?');
   for (let i = 0; i < 3; i += 1) {
     const number1 = getRandomInt(10);
     const number2 = getRandomInt(10);
@@ -34,10 +32,10 @@ const calcGame = () => {
     if (answerUser === String(rightAnswer)) {
       console.log('Correct!');
     } if (answerUser !== String(rightAnswer)) {
-      return console.log(`"${answerUser}" is wrong answer ;(. Correct answer was "${rightAnswer}". \nLet's try again!`);
+      return console.log(`"${answerUser}" is wrong answer ;(. Correct answer was "${rightAnswer}". \nLet's try again, ${userName}!`);
     }
   }
-  return console.log('Congratulations!');
+  return console.log(`Congratulations, ${userName}!`);
 };
 
-export { showGreeting, calcGame };
+export default calcGame;

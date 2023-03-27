@@ -1,14 +1,11 @@
 import readlineSync from 'readline-sync';
+import showName from '../index.js';
 
-const showGreeting = () => {
-  const userName = readlineSync.question('May I have your name?');
-  const greeting = 'Hello';
-  console.log(`${greeting}, ${userName}!`);
-  return userName;
-};
+const getRandomInt = (max) => Math.floor(Math.random() * max);
+const userName = showName();
 
 const evenGame = () => {
-  const getRandomInt = (max) => Math.floor(Math.random() * max);
+  console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
   for (let i = 0; i < 3; i += 1) {
     const number = getRandomInt(1000);
@@ -22,11 +19,11 @@ const evenGame = () => {
       console.log('Correct!');
     } else {
       const error = (answerUser === 'yes' ? 'no' : 'yes');
-      const errorMessage = `"${answerUser}" is wrong answer ;(. Correct answer was '${error}'.\nLet's try again!`;
+      const errorMessage = `"${answerUser}" is wrong answer ;(. Correct answer was '${error}'.\nLet's try again, ${userName}!`;
       return console.log(errorMessage);
     }
   }
-  return console.log('Congratulations!');
+  return console.log(`Congratulations, ${userName}!`);
 };
 
-export { showGreeting, evenGame };
+export default evenGame;
