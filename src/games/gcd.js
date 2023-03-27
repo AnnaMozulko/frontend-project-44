@@ -19,8 +19,7 @@ const gcdGame = () => {
   for (let i = 0; i < 3; i += 1) {
     const number1 = getRandomInt(20);
     const number2 = getRandomInt(20);
-    const task = `${number1}  ${number2}`;
-    console.log('Question:', task);
+    console.log(`Question: ${number1}  ${number2}`);
     const answerUser = readlineSync.question('Your answer:');
     const rightAnswer = gcd(number1, number2);
 
