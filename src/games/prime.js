@@ -2,7 +2,7 @@
 import readlineSync from 'readline-sync';
 import showName from '../index.js';
 
-const getRandomInt = (max) => Math.floor(Math.random() * max);
+const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 const userName = showName();
 
 const isNatural = (task) => {
@@ -18,7 +18,7 @@ const primeGame = () => {
   console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
 
   for (let i = 0; i < 3; i += 1) {
-    const task = getRandomInt(20);
+    const task = getRandomInt(1, 20);
     console.log('Question:', task);
     const answerUser = readlineSync.question('Your answer:');
     const rightAnswer = isNatural(task) ? 'yes' : 'no';
