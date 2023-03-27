@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 import showName from '../index.js';
 
-const getRandomInt = (max) => Math.floor(Math.random() * max);
+const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 const userName = showName();
 
 const gcd = (number1, number2) => {
@@ -17,8 +17,8 @@ const gcd = (number1, number2) => {
 const gcdGame = () => {
   console.log('Find the greatest common divisor of given numbers.');
   for (let i = 0; i < 3; i += 1) {
-    const number1 = getRandomInt(20);
-    const number2 = getRandomInt(20);
+    const number1 = getRandomInt(1, 20);
+    const number2 = getRandomInt(1, 20);
     console.log(`Question: ${number1} ${number2}`);
     const answerUser = readlineSync.question('Your answer:');
     const rightAnswer = gcd(number1, number2);
