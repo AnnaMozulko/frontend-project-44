@@ -31,7 +31,7 @@ const progressionGame = () => {
     } if (answerUser !== String(rightAnswer)) {
       return console.log(`"${answerUser}" is wrong answer ;(. Correct answer was "${rightAnswer}". \nLet's try again, ${userName}!`);
     }
-}
+  }
   return console.log(`Congratulations, ${userName}!`);
 };
 export default progressionGame;
