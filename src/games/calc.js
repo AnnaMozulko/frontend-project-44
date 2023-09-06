@@ -1,41 +1,31 @@
-import readlineSync from 'readline-sync';
-import showName from '../index.js';
+import { cons } from '@hexlet/pairs';
+import generateRandomNum from '../utils.js';
+import startGame from '../index.js';
 
-const getRandomInt = (max) => Math.floor(Math.random() * max);
-const userName = showName();
+const description = 'What is the result of the expression?';
 
-const calcGame = () => {
-  console.log('What is the result of the expression?');
-  for (let i = 0; i < 3; i += 1) {
-    const number1 = getRandomInt(10);
-    const number2 = getRandomInt(10);
-    const signs = ['+', '-', '*'];
-    const sign = signs[getRandomInt(3)];
-    const task = `${number1} ${sign} ${number2}`;
-    console.log('Question:', task);
-    const answerUser = readlineSync.question('Your answer:');
+const findCalcPair = () => {
+  const numOne = generateRandomNum(3, 10);
+  const numTwo = generateRandomNum(1, 2);
+  const operation = generateRandomNum(0, 2);
 
-    let rightAnswer = 0;
-    switch (sign) {
-      case '+':
-        rightAnswer = number1 + number2;
-        break;
-      case '-':
-        rightAnswer = number1 - number2;
-        break;
-      case '*':
-        rightAnswer = number1 * number2;
-        break;
-      default:
-        rightAnswer = null;
-    }
-    if (answerUser === String(rightAnswer)) {
-      console.log('Correct!');
-    } if (answerUser !== String(rightAnswer)) {
-      return console.log(`"${answerUser}" is wrong answer ;(. Correct answer was "${rightAnswer}". \nLet's try again, ${userName}!`);
-    }
+  let question;
+  let rightAnswer;
+
+  switch (operation) {
+    case 0:
+      question = `${numOne} + ${numTwo}`;
+      rightAnswer = numOne + numTwo;
+      break;
+    case 1:
+      question = `${numOne} - ${numTwo}`;
+      rightAnswer = numOne - numTwo;
+      break;
+    default:
+      question = `${numOne} * ${numTwo}`;
+      rightAnswer = numOne * numTwo;
   }
-  return console.log(`Congratulations, ${userName}!`);
+  return cons (question, String(rightAnswer));
 };
 
-export default calcGame;
+export default () => startGame(description, findCalcPair);

@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "type": "module",
-  "description": "[![Actions Status](https://github.com/AnnaMozulko/frontend-project-44/workflows/hexlet-check/badge.svg)](https://github.com/AnnaMozulko/frontend-project-44/actions)",
+  "description": "the first training project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,7 +18,7 @@
     "brain-prime": "bin/brain-prime.js"
   },
   "dependencies": {
-    "mathjs": "^11.7.0",
+    "@hexlet/pairs": "^1.1.1",
     "readline-sync": "^1.4.10"
   },
   "devDependencies": {

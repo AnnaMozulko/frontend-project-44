@@ -1,34 +1,26 @@
-import readlineSync from 'readline-sync';
-import showName from '../index.js';
+/* eslint-disable import/no-extraneous-dependencies */
+import { cons } from '@hexlet/pairs';
+import generateRandomNum from '../utils.js';
+import startGame from '../index.js';
 
-const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
-const userName = showName();
+const description = 'Find the greatest common divisor of given numbers.';
 
-const gcd = (number1, number2) => {
-  const min = (number1 < number2) ? number1 : number2;
+const findGCD = (numOne, numTwo) => {
+  const min = (numOne < numTwo) ? numOne : numTwo;
   for (let i = min; i > 1; i -= 1) {
-    if (number1 % i === 0 && number2 % i === 0) {
+    if (numOne % i === 0 && numTwo % i === 0) {
       return i;
     }
   }
   return 1;
 };
 
-const gcdGame = () => {
-  console.log('Find the greatest common divisor of given numbers.');
-  for (let i = 0; i < 3; i += 1) {
-    const number1 = getRandomInt(1, 20);
-    const number2 = getRandomInt(1, 20);
-    console.log(`Question: ${number1} ${number2}`);
-    const answerUser = readlineSync.question('Your answer:');
-    const rightAnswer = gcd(number1, number2);
-
-    if (answerUser === String(rightAnswer)) {
-      console.log('Correct!');
-    } if (answerUser !== String(rightAnswer)) {
-      return console.log(`"${answerUser}" is wrong answer ;(. Correct answer was "${rightAnswer}". \nLet's try again, ${userName}!`);
-    }
-  }
-  return console.log(`Congratulations, ${userName}!`);
+const findGCDPair = () => {
+  const numOne = generateRandomNum(1, 100);
+  const numTwo = generateRandomNum(1, 100);
+  const question = `${numOne} ${numTwo}`;
+  const rightAnswer = findGCD(numOne, numTwo);
+  return cons(question, String(rightAnswer));
 };
-export default gcdGame;
+
+export default () => startGame(description, findGCDPair);
