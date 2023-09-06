@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import readlineSync from 'readline-sync';
 import { car, cdr } from '@hexlet/pairs';
 
@@ -6,7 +7,8 @@ const roundToWin = 3;
 const welcomeSign = 'Welcome to the Brain Games!';
 const entryUserName = (sign) => {
   const userName = readlineSync.question(sign);
-  console.log();
+  const greeting = 'Hello';
+  console.log(`${greeting}, ${userName}!`);
   return userName;
 };
 
