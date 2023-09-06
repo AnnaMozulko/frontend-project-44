@@ -14,7 +14,7 @@ const findProgressionPair = () => {
   let question = '';
   for (let i = 0; i < length; i += 1) {
     const nextElem = (i === questionIndex) ? '..' : start + (diff * i);
-    question += ` ${nextElem}`;
+    question += `${nextElem} `;
   }
   const rightAnswer = start + questionIndex * diff;
   return cons(question, String(rightAnswer));
