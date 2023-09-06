@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { cons } from '@hexlet/pairs';
 import generateRandomNum from '../utils.js';
 import startGame from '../index.js';
@@ -25,7 +26,7 @@ const findCalcPair = () => {
       question = `${numOne} * ${numTwo}`;
       rightAnswer = numOne * numTwo;
   }
-  return cons (question, String(rightAnswer));
+  return cons(question, String(rightAnswer));
 };
 
 export default () => startGame(description, findCalcPair);
