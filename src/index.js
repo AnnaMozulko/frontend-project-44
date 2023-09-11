@@ -4,7 +4,6 @@ import { car, cdr } from '@hexlet/pairs';
 
 const roundToWin = 3;
 
-const welcomeSign = 'Welcome to the Brain Games!';
 const entryUserName = (sign) => {
   const userName = readlineSync.question(sign);
   const greeting = 'Hello';
@@ -13,9 +12,8 @@ const entryUserName = (sign) => {
 };
 
 export default (description, gameFunc) => {
-  console.log(welcomeSign);
+  console.log('Welcome to the Brain Games!');
   console.log(description);
-  console.log();
 
   const userName = entryUserName('May I have your name?');
   const iter = (numWin) => {
