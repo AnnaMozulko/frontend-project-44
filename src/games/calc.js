@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { cons } from '@hexlet/pairs';
 import generateRandomNum from '../utils.js';
 import startGame from '../index.js';
