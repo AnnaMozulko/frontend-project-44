@@ -5,23 +5,11 @@ import startGame from '../index.js';
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (num) => {
-  const firstDivide = 2;
-  if (num < firstDivide) {
+  for(var i = 2; i < num; i++) {
+    if(num % i === 0)
     return false;
   }
-  if (num === firstDivide) {
-    return true;
-  }
-  const iter = (divider) => {
-    if (num % divider === 0) {
-      return false;
-    }
-    if (divider > num / 2) {
-      return true;
-    }
-    return iter(divider + 1);
-  };
-  return iter(firstDivide);
+  return num > 1;
 };
 
 const findPrimePair = () => {
