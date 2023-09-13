@@ -1,4 +1,4 @@
-/*eslint no-unreachable-loop:["ForStatement"]*/
+/* eslint no-unreachable-loop:"error" */
 import { cons } from '@hexlet/pairs';
 import generateRandomNum from '../utils.js';
 import startGame from '../index.js';
