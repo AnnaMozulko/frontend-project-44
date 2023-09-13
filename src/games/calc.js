@@ -4,28 +4,48 @@ import startGame from '../index.js';
 
 const description = 'What is the result of the expression?';
 
+const getRandomInt = (max) => Math.floor(Math.random() * max);
+
+
 const findCalcPair = () => {
-  const numOne = generateRandomNum(3, 10);
-  const numTwo = generateRandomNum(1, 2);
-  const operation = generateRandomNum(0, 2);
 
-  let question;
-  let rightAnswer;
+  for (let i = 0; i < 3; i +=1) {
+    const numOne = generateRandomNum(3, 10);
+    const numTwo = generateRandomNum(1, 2);
+    const signs = ['+', '-', '*'];
+    const sign = signs[getRandomInt(signs.length)];
 
-  switch (operation) {
-    case 0:
-      question = `${numOne} + ${numTwo}`;
-      rightAnswer = numOne + numTwo;
-      break;
-    case 1:
-      question = `${numOne} - ${numTwo}`;
-      rightAnswer = numOne - numTwo;
-      break;
-    default:
-      question = `${numOne} * ${numTwo}`;
-      rightAnswer = numOne * numTwo;
-  }
+    const verity = () => {
+
+      let rightAnswer = 0;
+    
+    
+    switch (sign) {
+      case '+':
+        rightAnswer = numOne + numTwo;
+        break;
+      case '-':
+        rightAnswer = numOne - numTwo;
+        break;
+      case '*':
+        rightAnswer = numOne * numTwo;
+        break;
+        default:
+          rightAnswer = null;
+    }
+      
+       return rightAnswer; 
+      
+    };
+
+  
+  
+  const question = `${numOne} ${sign} ${numTwo}`;
+  const rightAnswer = verity();
+  
+  
   return cons(question, String(rightAnswer));
+  }
 };
 
 export default () => startGame(description, findCalcPair);
