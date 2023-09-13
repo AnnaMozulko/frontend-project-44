@@ -1,3 +1,4 @@
+/*eslint no-unreachable-loop:["ForStatement"]*/
 import { cons } from '@hexlet/pairs';
 import generateRandomNum from '../utils.js';
 import startGame from '../index.js';
@@ -33,8 +34,9 @@ const findCalcPair = () => {
 
     const question = `${numOne} ${sign} ${numTwo}`;
     const rightAnswer = verity();
-      return cons(question, String(rightAnswer));
+    return cons(question, String(rightAnswer));
   }
+  return result;
 };
 
 export default () => startGame(description, findCalcPair);
