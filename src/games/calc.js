@@ -15,27 +15,25 @@ const findCalcPair = () => {
 
     const verity = () => {
       let rightAnswer = 0;
-    
-    switch (sign) {
-      case '+':
-        rightAnswer = numOne + numTwo;
-        break;
-      case '-':
-        rightAnswer = numOne - numTwo;
-        break;
-      case '*':
-        rightAnswer = numOne * numTwo;
-        break;
+      switch (sign) {
+        case '+':
+          rightAnswer = numOne + numTwo;
+          break;
+        case '-':
+          rightAnswer = numOne - numTwo;
+          break;
+        case '*':
+          rightAnswer = numOne * numTwo;
+          break;
         default:
           rightAnswer = null;
-    }
-       return rightAnswer; 
+      }
+      return rightAnswer;
     };
 
-  const question = `${numOne} ${sign} ${numTwo}`;
-  const rightAnswer = verity();
-  
-  return cons(question, String(rightAnswer));
+    const question = `${numOne} ${sign} ${numTwo}`;
+    const rightAnswer = verity();
+      return cons(question, String(rightAnswer));
   }
 };
 
