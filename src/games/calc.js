@@ -1,4 +1,3 @@
-/* eslint no-unreachable-loop:"error" */
 import { cons } from '@hexlet/pairs';
 import generateRandomNum from '../utils.js';
 import startGame from '../index.js';
@@ -7,36 +6,32 @@ const description = 'What is the result of the expression?';
 
 const getRandomInt = (max) => Math.floor(Math.random() * max);
 
-const findCalcPair = () => {
-  for (let i = 0; i < 3; i += 1) {
-    const numOne = generateRandomNum(3, 10);
-    const numTwo = generateRandomNum(1, 2);
-    const signs = ['+', '-', '*'];
-    const sign = signs[getRandomInt(signs.length)];
+const operation = () => {
+const signs = ['+', '-', '*'];
+const sign = signs[getRandomInt(signs.length)]; 
+return sign;
+};
 
-    const verity = () => {
-      let rightAnswer = 0;
+const findCalcPair = () => {
+      const numOne = generateRandomNum(3, 10);
+      const numTwo = generateRandomNum(1, 2);
+      const sign = operation();
+      let rightAnswer;
+      let question;
       switch (sign) {
-        case '+':
+        case '0':
+          question = `${numOne} + ${numTwo}`;
           rightAnswer = numOne + numTwo;
           break;
-        case '-':
+        case '1':
+          question = `${numOne} - ${numTwo}`;
           rightAnswer = numOne - numTwo;
           break;
-        case '*':
-          rightAnswer = numOne * numTwo;
-          break;
         default:
-          rightAnswer = null;
+          question = `${numOne} * ${numTwo}`;
+          rightAnswer = numOne * numTwo;
       }
-      return rightAnswer;
+      return cons(question, String(rightAnswer));
     };
-
-    const question = `${numOne} ${sign} ${numTwo}`;
-    const rightAnswer = verity();
-    return cons(question, String(rightAnswer));
-  }
-  return result;
-};
 
 export default () => startGame(description, findCalcPair);
